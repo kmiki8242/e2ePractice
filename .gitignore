@@ -20,10 +20,11 @@
 *.pem
 
 # debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+# npm-debug.log*
+# yarn-debug.log*
+# yarn-error.log*
+# .pnpm-debug.log*
+*.log
 
 # local env files
 .env*.local
@@ -33,3 +34,10 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+node_modules/
+package-lock.json
+package.json
+tsconfig.json
+
+
