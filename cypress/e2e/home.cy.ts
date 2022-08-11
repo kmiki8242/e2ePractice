@@ -7,6 +7,7 @@ describe('home spec', () => {
     cy.get(':nth-child(2) > .nav-link').contains('宿泊予約');
     cy.get('#signup-holder > .nav-link').contains('会員登録');
     cy.get('#login-holder > .btn').contains('ログイン');
+    //TODO:add assertion url
 
     //title name
     cy.title().should('include','HOTEL PLANISPHERE');
