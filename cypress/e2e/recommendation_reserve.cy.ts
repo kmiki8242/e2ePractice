@@ -1,17 +1,24 @@
 import { replace } from "cypress/types/lodash";
 import { text } from "stream/consumers";
 
+//金額の変化は別ファイルで見る
 describe('home spec', () => {
-  it('should open home as nologin user', () => {
-    //金額の変化は別ファイルで見る
-
+  it('should confirm plan', () => {
     cy.visit('/');
     cy.get('[id="navbarNav"]').contains("宿泊予約").click();
-    //予約ボタンを押すと別タブで開くことの確認
-    cy.get('a[href="./reserve.html?plan-id=0"]') 
-      .should('have.attr', 'target', '_blank'); 
-    cy.get('.col-lg-9 > .card > .card-body > .btn').should('have.text', 'このプランで予約').click();
-    
+
+    //予約ボタンを押す
+    cy.get('.col-lg-9').within(() =>{
+      cy.get('.card')
+        .children('.card-body')
+        .children('.btn')
+        //別タブで開くことの確認
+        .should('have.attr', 'target', '_blank')
+        .should('have.text', 'このプランで予約').click();
+    });
+  });
+
+  it('should reserve recommendation plan', () => {
     //予約画面に遷移
     cy.visit('https://hotel.testplanisphere.dev/ja/reserve.html?plan-id=0')
     cy.get('[id="plan-name"]').should('have.text', 'お得な特典付きプラン');
